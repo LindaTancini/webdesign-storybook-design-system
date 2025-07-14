@@ -1,5 +1,3 @@
-# Installazione di Storybook
+# Creazione di un componente (Design System)
 
 ---
-
-Questa repo è stata utilizzata per capire il meccanismo di installazione di Storybook + React + Vite.
