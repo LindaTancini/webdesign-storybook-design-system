@@ -1,0 +1,32 @@
+/* Box-Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Margine rimosso per tutti gli elementi */
+* {
+  margin: 0;
+}
+
+/* Miglioriamo la leggibilità del testo */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display di default dei media */
+img,
+picture video,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* I controlli dei form ereditano lo stile dai loro genitori */
+:where(input, textarea, select, button) {
+  font: inherit;
+  color: inherit;
+}
