@@ -1,0 +1,5 @@
+.badge {
+  background-color: blueviolet;
+  color: white;
+  padding: var(--spacing-xs);
+}
