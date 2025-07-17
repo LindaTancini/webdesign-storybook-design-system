@@ -95,6 +95,72 @@ export const Default: Story = {
           <h3>Green</h3>
           {renderSwatches(greens)}
         </div>
+        {/*Colori Semantici*/}
+        <h2>Semantic</h2>
+        {/* Box semantico: neutral */}
+        <h3>Neutral</h3>
+        <div className="info">
+          Per questo box abbiamo usato:
+          <ClickToCopy value="var(--color-neutral-bcg)">
+            --color-neutral-bcg
+          </ClickToCopy>
+          ,
+          <ClickToCopy value="var(--color-neutral-text)">
+            --color-neutral-text
+          </ClickToCopy>
+          e
+          <ClickToCopy value="var(--color-neutral-accent)">
+            --color-neutral-accent
+          </ClickToCopy>
+        </div>
+
+        {/* Box semantico: positivo */}
+        <h3>Positive</h3>
+        <div
+          className="info"
+          style={{
+            backgroundColor: "var(--color-positive-bcg)",
+            color: "var(--color-positive-text)",
+            borderColor: "var(--color-positive-accent)",
+          }}
+        >
+          Per questo box abbiamo usato:
+          <ClickToCopy value="var(--color-positive-bcg)">
+            --color-positive-bcg
+          </ClickToCopy>
+          ,
+          <ClickToCopy value="var(--color-positive-text)">
+            --color-positive-text
+          </ClickToCopy>
+          e
+          <ClickToCopy value="var(--color-positive-accent)">
+            --color-positive-accent
+          </ClickToCopy>
+        </div>
+
+        {/* Box semantico: negativo */}
+        <h3>Negative</h3>
+        <div
+          className="info"
+          style={{
+            backgroundColor: "var(--color-negative-bcg)",
+            color: "var(--color-negative-text)",
+            borderColor: "var(--color-negative-accent)",
+          }}
+        >
+          Per questo box abbiamo usato:
+          <ClickToCopy value="var(--color-negative-bcg)">
+            --color-negative-bcg
+          </ClickToCopy>
+          ,
+          <ClickToCopy value="var(--color-negative-text)">
+            --color-negative-text
+          </ClickToCopy>
+          e
+          <ClickToCopy value="var(--color-negative-accent)">
+            --color-negative-accent
+          </ClickToCopy>
+        </div>
       </>
     );
   },
