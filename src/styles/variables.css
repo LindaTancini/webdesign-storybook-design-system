@@ -6,10 +6,8 @@
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-}
 
-/* Typography Variables */
-:root {
+  /* Typography Variables */
   --font-size-hero: clamp(3.815rem, 3.573rem + 0.97vw, 4.3rem);
   --font-size-h1: clamp(2.896rem, 2.436rem + 1.838vw, 3.815rem);
   --font-size-h2: clamp(2.488rem, 2.206rem + 1.128vw, 3.052rem);
@@ -20,4 +18,41 @@
   --font-size-body: 1rem;
   --font-size-sm: 0.875rem;
   --font-size-xs: 0.75rem;
+
+  /* Color Variables */
+  /* Gray */
+  --oc-gray-0: #f8f9fa;
+  --oc-gray-1: #f1f3f5;
+  --oc-gray-2: #e9ecef;
+  --oc-gray-3: #dee2e6;
+  --oc-gray-4: #ced4da;
+  --oc-gray-5: #adb5bd;
+  --oc-gray-6: #868e96;
+  --oc-gray-7: #495057;
+  --oc-gray-8: #343a40;
+  --oc-gray-9: #212529;
+
+  /* Red */
+  --oc-red-0: #fff5f5;
+  --oc-red-1: #ffe3e3;
+  --oc-red-2: #ffc9c9;
+  --oc-red-3: #ffa8a8;
+  --oc-red-4: #ff8787;
+  --oc-red-5: #ff6b6b;
+  --oc-red-6: #fa5252;
+  --oc-red-7: #f03e3e;
+  --oc-red-8: #e03131;
+  --oc-red-9: #c92a2a;
+
+  /* Green */
+  --oc-green-0: #ebfbee;
+  --oc-green-1: #d3f9d8;
+  --oc-green-2: #b2f2bb;
+  --oc-green-3: #8ce99a;
+  --oc-green-4: #69db7c;
+  --oc-green-5: #51cf66;
+  --oc-green-6: #40c057;
+  --oc-green-7: #37b24d;
+  --oc-green-8: #2f9e44;
+  --oc-green-9: #2b8a3e;
 }
