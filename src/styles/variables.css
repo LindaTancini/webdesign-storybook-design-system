@@ -55,4 +55,16 @@
   --oc-green-7: #37b24d;
   --oc-green-8: #2f9e44;
   --oc-green-9: #2b8a3e;
+
+  --color-positive-bcg: var(--oc-green-1);
+  --color-positive-text: var(--oc-green-9);
+  --color-positive-accent: var(--oc-green-6);
+
+  --color-negative-bcg: var(--oc-red-1);
+  --color-negative-text: var(--oc-red-9);
+  --color-negative-accent: var(--oc-red-6);
+
+  --color-neutral-bcg: var(--oc-gray-0);
+  --color-neutral-text: var(--oc-gray-9);
+  --color-neutral-accent: var(--oc-gray-7);
 }
