@@ -15,16 +15,16 @@ export const Badge: React.FC<BadgeProps> = ({
   ...attrs // Raccoglie tutte le altre props HTML
 }) => {
   return (
-    <root.div>
+    <root.span>
       {" "}
       {/* Inizia un contenitore Shadow DOM */}
       <style>{css}</style>{" "}
       {/* Inserisce lo stile CSS direttamente nello shadow DOM */}
-      <div className={`badge ${variant}`} {...attrs}>
+      <span className={`badge ${variant}`} {...attrs}>
         {" "}
         {/* Applica classe dinamica in base alla variante e altre props */}
         {children} {/* Mostra il contenuto passato al componente */}
-      </div>
-    </root.div>
+      </span>
+    </root.span>
   );
 };
