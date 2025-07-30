@@ -2,6 +2,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 // Importa il componente Tabs da una directory locale
 import { Tabs } from "../components/Tabs/Tabs";
+// Importo il componente Badge da una directory locale
+import { Badge } from "../components/Badge/Badge";
 // Importa il modulo react-shadow per usare Shadow DOM in React
 import root from "react-shadow";
 
@@ -55,8 +57,34 @@ export const Default: Story = {
       <Tabs.Item label="Label 2">
         <Skeleton>Tab content 2</Skeleton> {/* Contenuto del secondo tab */}
       </Tabs.Item>
-      <Tabs.Item label="Label 3">
+      <Tabs.Item
+        label={
+          <span>
+            Label 3 <Badge>New</Badge> {/* Badge con testo "New" */}
+          </span>
+        }
+      >
         <Skeleton>Tab content 3</Skeleton> {/* Contenuto del terzo tab */}
+      </Tabs.Item>
+      <Tabs.Item
+        label={
+          <span>
+            Label 4 <Badge variant="positive">Positive</Badge>{" "}
+            {/* Badge con variante positiva */}
+          </span>
+        }
+      >
+        <Skeleton>Tab content 4</Skeleton> {/* Contenuto del quarto tab */}
+      </Tabs.Item>
+      <Tabs.Item
+        label={
+          <span>
+            Label 5 <Badge variant="negative">Negative</Badge>{" "}
+            {/* Badge con variante negativa */}
+          </span>
+        }
+      >
+        <Skeleton>Tab content 5</Skeleton> {/* Contenuto del quinto tab */}
       </Tabs.Item>
     </Tabs>
   ),
