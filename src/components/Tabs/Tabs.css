@@ -1,0 +1,47 @@
+/* Contenitore dei tab: li dispone in riga con uno spazio tra di loro */
+.tablist {
+  display: flex;
+  gap: var(--spacing-xs); /* Spazio orizzontale tra i tab */
+  margin-bottom: var(--spacing-md); /* Spazio sotto la lista dei tab */
+}
+
+/* Stili base per ciascun tab (button con role="tab") */
+[role="tab"] {
+  cursor: pointer; /* Mostra il cursore a forma di mano */
+  border: 1px solid var(--color-gray-6); /* Bordo grigio */
+  background-color: transparent; /* Sfondo trasparente */
+  font-size: var(--font-size-sm); /* Dimensione font da variabile */
+  font-weight: 800; /* Testo in grassetto */
+  padding: var(--spacing-sm); /* Padding interno */
+  border-radius: 100vw; /* Bordi completamente arrotondati (pill shape) */
+  min-height: calc(42rem / 16); /* Altezza minima (42px) */
+  transition: all var(--timing-fast) ease-in-out; /* Animazione fluida per tutte le proprietà */
+
+  /* Stile al passaggio del mouse */
+  &:hover {
+    background-color: var(--color-gray-1); /* Sfondo grigio chiaro al hover */
+  }
+
+  /* Stile del tab selezionato */
+  &[aria-selected="true"] {
+    background-color: var(--color-gray-15); /* Sfondo scuro per il tab attivo */
+    color: var(--color-gray-0); /* Testo chiaro */
+  }
+}
+
+/* Animazione di entrata verticale e dissolvenza */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Inizia trasparente */
+    transform: translateY(-0.5rem); /* Leggermente più in alto */
+  }
+  to {
+    opacity: 1; /* Opacità completa */
+    transform: translateY(0); /* Posizione normale */
+  }
+}
+
+/* Applica animazione ai contenuti dei tab (tabpanel) */
+[role="tabpanel"] {
+  animation: fadeIn var(--timing-fast) ease-in-out; /* Anima l'ingresso dei contenuti */
+}
