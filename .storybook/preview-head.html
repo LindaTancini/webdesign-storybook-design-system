@@ -1,0 +1,21 @@
+<style>
+  /* Imposta il color scheme predefinito del browser su 'light' (modalità chiara) */
+  body {
+    color-scheme: light;
+
+    /* Se il body ha la classe .dark-theme, imposta il color scheme su 'dark' (modalità scura) */
+    &:where(.dark-theme) {
+      color-scheme: dark;
+    }
+  }
+
+  /* Applica gli stessi stili sia al body che all'anteprima dei documenti di Storybook */
+  body,
+  .sbdocs-preview.sbdocs-preview {
+    /* Imposta il colore del testo usando una variabile CSS personalizzata */
+    color: var(--color-neutral-text);
+
+    /* Imposta il colore di sfondo usando una variabile CSS personalizzata */
+    background-color: var(--color-neutral-bcg);
+  }
+</style>
