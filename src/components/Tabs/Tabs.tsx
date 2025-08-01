@@ -55,7 +55,7 @@ export const Tabs: React.FC<TabsProps> & { Item: typeof Item } = ({
 
   // Renderizza il componente con Shadow DOM
   return (
-    <root.div role="tablist">
+    <root.div>
       {" "}
       {/* Aria role per accessibilità */}
       <GlobalStyles /> {/* Applica gli stili globali */}
