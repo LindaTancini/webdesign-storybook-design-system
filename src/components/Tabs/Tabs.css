@@ -19,14 +19,28 @@
 
   /* Stile al passaggio del mouse */
   &:hover {
-    background-color: var(--color-gray-1); /* Sfondo grigio chiaro al hover */
+    background-color: light-dark(
+      var(--color-gray-1),
+      var(--color-gray-15)
+    ); /* Sfondo grigio chiaro al hover */
   }
 
   /* Stile del tab selezionato */
   &[aria-selected="true"] {
-    background-color: var(--color-gray-15); /* Sfondo scuro per il tab attivo */
-    color: var(--color-gray-0); /* Testo chiaro */
+    background-color: light-dark(
+      var(--color-gray-15),
+      var(--color-gray-1)
+    ); /* Sfondo grigio scuro quando selezionato */
+    color: light-dark(
+      var(--color-gray-0),
+      var(--color-gray-15)
+    ); /* Testo chiaro quando selezionato */
   }
+}
+
+&:focus-visible {
+  outline: 2px solid light-dark(var(--color-gray-8), var(--color-gray-2)); /* Contorno visibile al focus */
+  outline-offset: 2px; /* Testo chiaro */
 }
 
 /* Animazione di entrata verticale e dissolvenza */
