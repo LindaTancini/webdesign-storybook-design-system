@@ -28,7 +28,7 @@ const Skeleton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <style>{` 
         div {
           text-align: center;
-          background-color: var(--color-neutral-bcg); 
+          background-color: light-dark(var(--color-gray-1), var(--color-gray-15)); 
           border-radius: var(--border-radius-md, 0.5rem); 
           width: 30rem;                 
           max-width: 100%;              
