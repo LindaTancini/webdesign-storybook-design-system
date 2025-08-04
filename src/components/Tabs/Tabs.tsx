@@ -55,7 +55,9 @@ export const Tabs: React.FC<TabsProps> & { Item: typeof Item } = ({
 
   // Renderizza il componente con Shadow DOM
   return (
-    <root.div>
+    // Il data-testid="tabs-root" viene usato nei test per accedere allo shadow DOM
+    // e ispezionare gli elementi interni del componente Tabs isolati tramite Shadow DOM.
+    <root.div data-testid="tabs-root">
       {" "}
       {/* Aria role per accessibilità */}
       <GlobalStyles /> {/* Applica gli stili globali */}
