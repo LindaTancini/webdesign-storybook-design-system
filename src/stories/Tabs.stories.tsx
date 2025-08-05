@@ -2,7 +2,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 // Importa il componente Tabs da una directory locale
 import { Tabs } from "../components/Tabs/Tabs";
-// Importo il componente Badge da una directory locale
+// Importa il componente Badge da una directory locale
 import { Badge } from "../components/Badge/Badge";
 // Importa il modulo react-shadow per usare Shadow DOM in React
 import root from "react-shadow";
@@ -23,22 +23,23 @@ type Story = StoryObj<typeof Tabs>;
 const Skeleton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <root.div>
-      {" "}
       {/* Utilizza Shadow DOM per incapsulare gli stili */}
-      <style>{` 
+      <style>{`
         div {
           text-align: center;
-          background-color: light-dark(var(--color-gray-1), var(--color-gray-15)); 
-          border-radius: var(--border-radius-md, 0.5rem); 
-          width: 30rem;                 
-          max-width: 100%;              
-          min-height: 4rem;             
-          margin-bottom: 1rem;          
-          align-content: center;        
+          background-color: light-dark(var(--color-gray-1), var(--color-gray-15));
+          border-radius: var(--border-radius-md, 0.5rem);
+          width: 30rem;
+          max-width: 100%;
+          min-height: 4rem;
+          margin-bottom: 1rem;
+          align-content: center;
         }
       `}</style>
-      <div>{children}</div> {/* Primo blocco visibile con contenuto */}
-      <div /> {/* Blocchi vuoti di decorazione o placeholder */}
+      {/* Primo blocco visibile con contenuto */}
+      <div>{children}</div>
+      {/* Blocchi vuoti di decorazione o placeholder */}
+      <div />
       <div />
       <div />
     </root.div>
@@ -49,8 +50,7 @@ const Skeleton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 export const Default: Story = {
   render: () => (
     <Tabs>
-      {" "}
-      {/* Componente Tabs con tre voci/tab */}
+      {/* Nel componente Tabs sono presenti solo figli di tipo Tabs.Item */}
       <Tabs.Item label="Label 1">
         <Skeleton>Tab content 1</Skeleton> {/* Contenuto del primo tab */}
       </Tabs.Item>
