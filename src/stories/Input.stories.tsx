@@ -19,8 +19,36 @@ export default meta;
 // Tipo per la storia basato sul meta definito sopra
 type Story = StoryObj<typeof Input>;
 
-// Storia predefinita per il componente Input
+// Storia che mostra il componente Input in diverse varianti
+// Questa storia include un campo di input di tipo testo, un select e un radio
 export const Default: Story = {
+  render: ({ label }) => (
+    <div>
+      <Input label={label} kind="text" />
+      <Input
+        label={label}
+        options={[
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+        ]}
+        kind="select"
+      />
+      <Input
+        label={label}
+        options={[
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+        ]}
+        kind="radio"
+        name="example-radio"
+      />
+    </div>
+  ),
+};
+
+// Storia per il componente Input con tipo testo
+// Questa storia mostra come utilizzare il componente Input come un campo di testo
+export const InputText: Story = {
   render: ({ label }) => <Input label={label} kind="text" />,
 };
 
