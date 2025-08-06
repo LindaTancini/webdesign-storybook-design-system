@@ -1,54 +1,65 @@
 .container {
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-template-columns: calc(24rem / 16) auto calc(24rem / 16);
-  margin-bottom: 1rem;
+  display: grid; /* Dispone gli elementi figli in una griglia */
+  grid-template-rows: repeat(3, auto); /* 3 righe con altezza automatica */
+  grid-template-columns: calc(24rem / 16) auto calc(24rem / 16); /* 3 colonne: stretta, flessibile, stretta */
+  margin-bottom: 1rem; /* Spazio inferiore */
+
   &:where(.radio) {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Se .container ha anche la classe .radio, usa flex al posto di grid */
+    flex-direction: column; /* Dispone i figli in colonna */
   }
 }
 
 .container:has(.icon) input:not([type="radio"]) {
-  padding-right: calc(24rem / 16);
+  padding-right: calc(
+    24rem / 16
+  ); /* Aggiunge padding a destra se c'è un'icona (eccetto per radio) */
 }
+
 .container:has(.icon.left) input:not([type="radio"]) {
-  padding-left: calc(24rem / 16);
-  padding-right: 0;
+  padding-left: calc(
+    24rem / 16
+  ); /* Se l’icona è a sinistra, padding a sinistra */
+  padding-right: 0; /* Rimuove padding a destra per evitare doppio spazio */
 }
 
 :is(label, .label) {
-  color: light-dark(var(--color-gray-9), var(--color-gray-1));
-  grid-row: 1/2;
-  grid-column: 1/4;
-  font-weight: 800;
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  margin-bottom: 0.25rem;
+  color: light-dark(
+    var(--color-gray-9),
+    var(--color-gray-1)
+  ); /* Colore dinamico in base al tema */
+  grid-row: 1/2; /* Etichetta sulla prima riga */
+  grid-column: 1/4; /* Occupa tutte e tre le colonne */
+  font-weight: 800; /* Testo in grassetto */
+  cursor: pointer; /* Cursor a forma di mano */
+  font-size: var(
+    --font-size-sm
+  ); /* Usa la dimensione testo definita nel tema */
+  margin-bottom: 0.25rem; /* Piccolo spazio sotto l'etichetta */
 }
 
 input:not([type="radio"]),
 select {
-  grid-row: 2/3;
-  grid-column: 1/4;
-  min-height: calc(24rem / 16);
+  grid-row: 2/3; /* Campo input nella seconda riga */
+  grid-column: 1/4; /* Occupa tutta la larghezza disponibile */
+  min-height: calc(24rem / 16); /* Altezza minima uniforme */
 }
 
 .icon {
-  grid-row: 2/3;
-  grid-column: 3/4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(24rem / 16);
+  grid-row: 2/3; /* Posizionamento verticale accanto all'input */
+  grid-column: 3/4; /* Di default, l’icona è a destra */
+  display: flex; /* Centro contenuto dentro l’icona */
+  align-items: center; /* Allinea verticalmente */
+  justify-content: center; /* Allinea orizzontalmente */
+  width: calc(24rem / 16); /* Larghezza icona coerente con il padding */
   pointer-events: none; /* L'icona non deve interferire con l'interazione dell'input */
 
   &:where(.left) {
-    grid-column: 1/2;
+    grid-column: 1/2; /* Se ha la classe .left, posizionala a sinistra */
   }
 
   > svg {
-    width: 1rem;
+    width: 1rem; /* Dimensione icona SVG */
     height: 1rem;
   }
 }
