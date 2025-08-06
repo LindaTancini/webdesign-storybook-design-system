@@ -1,5 +1,9 @@
 // Importa React per usare JSX e gli hook
 import React from "react";
+// Importa css per gli stili del componente
+import css from "../Input/Input.css?raw";
+// React shadow per il supporto di CSS in JS
+import root from "react-shadow";
 
 // Definisce i props per un input generico (text, email, password)
 // Estende i normali attributi HTML per input
@@ -74,16 +78,30 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (
 };
 
 // Componente principale Input che mostra una label e il campo corrispondente
-export const Input: React.FC<GeneralInputProps> = ({ label, id, ...props }) => {
-  // Genera un id univoco se non viene passato
+export const Input: React.FC<GeneralInputProps> = ({
+  label,
+  id,
+  className,
+  ...props
+}) => {
+  // Usa useId per generare un ID se non è stato passato (NB: questo ignora il valore di `id` se definito)
   const defaultId = React.useId() || id;
 
   return (
-    <>
-      {/* Associa la label all’input usando htmlFor */}
-      <label htmlFor={defaultId}>{label}</label>
-      {/* Passa i props al componente interno e imposta l’id */}
-      <InternalInput {...props} id={defaultId} />
-    </>
+    <root.div>
+      <style>{css}</style>
+      <div className={`${className ?? ""} container ${props.kind}`}>
+        {/* Se è un gruppo di radio button, mostra il label come semplice testo */}
+        {props.kind === "radio" ? (
+          <span className="label">{label}</span>
+        ) : (
+          // Altrimenti, crea un elemento <label> associato all'input
+          <label htmlFor={defaultId}>{label}</label>
+        )}
+
+        {/* Mostra l’input vero e proprio */}
+        <InternalInput {...props} id={defaultId} />
+      </div>
+    </root.div>
   );
 };
