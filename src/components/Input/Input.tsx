@@ -111,7 +111,11 @@ export const Input: React.FC<GeneralInputProps> = ({
         {/* Mostra l’input vero e proprio */}
         <InternalInput {...props} id={defaultId} />
         {/* Se è stata specificata un'icona, la mostra accanto all'input */}
-        {IconComponent && <IconComponent className="icon" />}
+        {IconComponent && (
+          <div className="icon">
+            <IconComponent />
+          </div>
+        )}
       </div>
     </root.div>
   );
