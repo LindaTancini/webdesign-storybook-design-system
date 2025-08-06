@@ -11,6 +11,7 @@ import * as Icon from "react-feather";
 // Estende i normali attributi HTML per input
 type InputProps = {
   kind: "text" | "email" | "password";
+  icon?: keyof typeof Icon; // Icona opzionale da mostrare accanto all'input
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 // Definisce i props per un elemento select
@@ -19,6 +20,7 @@ type SelectProps = {
   kind: "select";
   options: { label: string; value: string }[]; // Opzioni da mostrare nel menu a tendina
   placeholder?: string; // Placeholder opzionale mostrato come prima option disabilitata
+  icon?: never; // Non si usa l'icona per i select
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 
 // Definisce i props per un gruppo di radio button
@@ -28,6 +30,7 @@ type RadioProps = {
   options: { label: string; value: string }[]; // Opzioni radio da mostrare
   placeholder?: never; // Non si usa il placeholder per i radio
   name: string; // Necessario per raggruppare i radio button
+  icon?: never; // Non si usa l'icona per i radio
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 // Unione dei tre tipi di input possibili, tutti richiedono una label
@@ -94,8 +97,8 @@ export const Input: React.FC<GeneralInputProps> = ({
 
   return (
     <root.div>
-      {IconComponent && <IconComponent />}
       <style>{css}</style>
+      {/* Contenitore principale con classi dinamiche per stile e tipo di input */}
       <div className={`${className ?? ""} container ${props.kind}`}>
         {/* Se è un gruppo di radio button, mostra il label come semplice testo */}
         {props.kind === "radio" ? (
@@ -107,6 +110,8 @@ export const Input: React.FC<GeneralInputProps> = ({
 
         {/* Mostra l’input vero e proprio */}
         <InternalInput {...props} id={defaultId} />
+        {/* Se è stata specificata un'icona, la mostra accanto all'input */}
+        {IconComponent && <IconComponent className="icon" />}
       </div>
     </root.div>
   );
