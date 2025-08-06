@@ -4,6 +4,8 @@ import React from "react";
 import css from "../Input/Input.css?raw";
 // React shadow per il supporto di CSS in JS
 import root from "react-shadow";
+// Importo le icone da react-feather per l'input
+import * as Icon from "react-feather";
 
 // Definisce i props per un input generico (text, email, password)
 // Estende i normali attributi HTML per input
@@ -31,6 +33,7 @@ type RadioProps = {
 // Unione dei tre tipi di input possibili, tutti richiedono una label
 type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
   label: React.ReactNode; // Etichetta associata all’input
+  icon?: keyof typeof Icon; // Icona opzionale da mostrare accanto all'input
 };
 
 // Componente interno che gestisce il rendering dell’elemento HTML corretto
@@ -82,13 +85,16 @@ export const Input: React.FC<GeneralInputProps> = ({
   label,
   id,
   className,
+  icon,
   ...props
 }) => {
   // Usa useId per generare un ID se non è stato passato (NB: questo ignora il valore di `id` se definito)
   const defaultId = React.useId() || id;
+  const IconComponent = icon ? Icon[icon] : null;
 
   return (
     <root.div>
+      {IconComponent && <IconComponent />}
       <style>{css}</style>
       <div className={`${className ?? ""} container ${props.kind}`}>
         {/* Se è un gruppo di radio button, mostra il label come semplice testo */}
