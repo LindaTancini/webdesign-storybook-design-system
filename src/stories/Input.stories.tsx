@@ -17,5 +17,15 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
-  render: () => <Input kind="text" label="Label" placeholder="placeholder" />,
+  render: () => (
+    <Input
+      options={[
+        { label: "Option 1", value: "1" },
+        { label: "Option 2", value: "2" },
+      ]}
+      kind="select"
+      label="Label"
+      placeholder="Placeholder"
+    />
+  ),
 };
