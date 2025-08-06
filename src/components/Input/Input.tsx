@@ -12,6 +12,7 @@ import * as Icon from "react-feather";
 type InputProps = {
   kind: "text" | "email" | "password";
   icon?: keyof typeof Icon; // Icona opzionale da mostrare accanto all'input
+  iconPosition?: "left" | "right"; // Posizione dell'icona, se presente
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 // Definisce i props per un elemento select
@@ -21,6 +22,7 @@ type SelectProps = {
   options: { label: string; value: string }[]; // Opzioni da mostrare nel menu a tendina
   placeholder?: string; // Placeholder opzionale mostrato come prima option disabilitata
   icon?: never; // Non si usa l'icona per i select
+  iconPosition?: never; // Non si usa l'icona per i select
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 
 // Definisce i props per un gruppo di radio button
@@ -31,6 +33,7 @@ type RadioProps = {
   placeholder?: never; // Non si usa il placeholder per i radio
   name: string; // Necessario per raggruppare i radio button
   icon?: never; // Non si usa l'icona per i radio
+  iconPosition?: never; // Non si usa l'icona per i radio
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 // Unione dei tre tipi di input possibili, tutti richiedono una label
@@ -89,6 +92,7 @@ export const Input: React.FC<GeneralInputProps> = ({
   id,
   className,
   icon,
+  iconPosition,
   ...props
 }) => {
   // Usa useId per generare un ID se non è stato passato (NB: questo ignora il valore di `id` se definito)
@@ -112,7 +116,7 @@ export const Input: React.FC<GeneralInputProps> = ({
         <InternalInput {...props} id={defaultId} />
         {/* Se è stata specificata un'icona, la mostra accanto all'input */}
         {IconComponent && (
-          <div className="icon">
+          <div className={`icon ${iconPosition || ""}`}>
             <IconComponent />
           </div>
         )}
