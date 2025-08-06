@@ -1,9 +1,10 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Input } from "../components/Input/Input"; // Importa il componente Input
 
 // Definizione dei metadati per Storybook
 const meta: Meta = {
   title: "Components/Input", // Titolo della storia nella sidebar di Storybook
+  component: Input, // Componente da visualizzare
   parameters: {
     layout: "centered", // Centra il contenuto nello spazio della storia
   },
@@ -13,10 +14,8 @@ const meta: Meta = {
 export default meta;
 
 // Tipo per la storia basato sul meta definito sopra
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Input>;
 
-export const Input: Story = {
-  render: () => {
-    return <input type="text" placeholder="Type here..." />;
-  },
+export const Default: Story = {
+  render: () => <Input kind="text" label="Label" placeholder="placeholder" />,
 };
