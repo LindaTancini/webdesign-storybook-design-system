@@ -1,8 +1,12 @@
+/* CONTAINER */
+/* Stile per il contenitore principale dell'input */
 .container {
   display: grid; /* Dispone gli elementi figli in una griglia */
   grid-template-rows: repeat(3, auto); /* 3 righe con altezza automatica */
   grid-template-columns: calc(24rem / 16) auto calc(24rem / 16); /* 3 colonne: stretta, flessibile, stretta */
   margin-bottom: 1rem; /* Spazio inferiore */
+  position: relative; /* Necessario per posizionare l'icona */
+  padding: 0.25em; /* Padding per evitare che il contenuto tocchi i bordi */
 
   &:where(.radio) {
     display: flex; /* Se .container ha anche la classe .radio, usa flex al posto di grid */
@@ -20,9 +24,11 @@
   padding-left: calc(
     24rem / 16
   ); /* Se l’icona è a sinistra, padding a sinistra */
-  padding-right: 0; /* Rimuove padding a destra per evitare doppio spazio */
+  padding-right: 0.25; /* Piccolo padding a destra per uniformità */
 }
 
+/* LABEL */
+/* Stile per l'etichetta dell'input */
 :is(label, .label) {
   color: light-dark(
     var(--color-gray-9),
@@ -38,6 +44,8 @@
   margin-bottom: 0.25rem; /* Piccolo spazio sotto l'etichetta */
 }
 
+/* INPUT */
+/* Stile per gli input e i select */
 input:not([type="radio"]),
 select {
   grid-row: 2/3; /* Campo input nella seconda riga */
@@ -45,6 +53,12 @@ select {
   min-height: calc(24rem / 16); /* Altezza minima uniforme */
 }
 
+:where(input, select):focus {
+  outline: none; /* Rimuove il contorno di default al focus */
+}
+
+/* ICON */
+/* Stile per le icone all'interno dell'input */
 .icon {
   grid-row: 2/3; /* Posizionamento verticale accanto all'input */
   grid-column: 3/4; /* Di default, l’icona è a destra */
