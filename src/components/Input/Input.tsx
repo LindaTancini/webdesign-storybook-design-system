@@ -6,6 +6,7 @@ import css from "../Input/Input.css?raw";
 import root from "react-shadow";
 // Importo le icone da react-feather per l'input
 import * as Icon from "react-feather";
+import { GlobalStyles } from "../GlobalStyles";
 
 // Definisce i props per un input generico (text, email, password)
 // Estende i normali attributi HTML per input
@@ -101,6 +102,7 @@ export const Input: React.FC<GeneralInputProps> = ({
 
   return (
     <root.div>
+      <GlobalStyles />
       <style>{css}</style>
       {/* Contenitore principale con classi dinamiche per stile e tipo di input */}
       <div className={`${className ?? ""} container ${props.kind}`}>
@@ -111,9 +113,10 @@ export const Input: React.FC<GeneralInputProps> = ({
           // Altrimenti, crea un elemento <label> associato all'input
           <label htmlFor={defaultId}>{label}</label>
         )}
-
-        {/* Mostra l’input vero e proprio */}
-        <InternalInput {...props} id={defaultId} />
+        <div className="input-container">
+          {/* Mostra l’input vero e proprio */}
+          <InternalInput {...props} id={defaultId} />
+        </div>
         {/* Se è stata specificata un'icona, la mostra accanto all'input */}
         {IconComponent && (
           <div className={`icon ${iconPosition || ""}`}>
