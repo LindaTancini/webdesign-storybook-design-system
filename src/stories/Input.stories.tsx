@@ -24,7 +24,13 @@ type Story = StoryObj<typeof Input>;
 export const Default: Story = {
   render: ({ label }) => (
     <div>
-      <Input label={label} iconPosition="left" kind="text" icon="Book" />
+      <Input
+        placeholder="Text here"
+        label={label}
+        iconPosition="left"
+        kind="text"
+        icon="Book"
+      />
       <Input
         label={label}
         options={[
