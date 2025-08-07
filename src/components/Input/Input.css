@@ -46,15 +46,42 @@
 
 /* INPUT */
 /* Stile per gli input e i select */
-input:not([type="radio"]),
-select {
+
+.input-container {
+  display: grid; /* Dispone gli elementi figli in una griglia */
+  grid-template-rows: subgrid; /* Usa subgrid per allinearsi con il contenitore principale */
   grid-row: 2/3; /* Campo input nella seconda riga */
   grid-column: 1/4; /* Occupa tutta la larghezza disponibile */
-  min-height: calc(24rem / 16); /* Altezza minima uniforme */
+  border: 1px solid light-dark(var(--color-gray-9), var(--color-gray-1)); /* Bordo grigio chiaro */
+  border-radius: 0.25rem; /* Arrotonda gli angoli */
+
+  &:has(input[type="radio"]) {
+    display: flex; /* Se contiene un input radio, usa flex */
+    gap: var(--spacing-md); /* Spazio tra gli input radio */
+    border: none; /* Rimuove il bordo */
+
+    label {
+      display: flex; /* Etichetta come flex per allineare l'input radio */
+      align-items: center; /* Allinea verticalmente l'input radio */
+      gap: var(--spacing-xs); /* Spazio tra input radio e etichetta */
+    }
+  }
+}
+
+input:not([type="radio"]),
+select {
+  min-height: calc(28rem / 16); /* Altezza minima uniforme */
+  border: none; /* Rimuove il bordo di default */
+  border-radius: 0.25rem; /* Arrotonda gli angoli */
 }
 
 :where(input, select):focus {
   outline: none; /* Rimuove il contorno di default al focus */
+}
+
+.input-container:has(:where(input, select):focus-visible) {
+  outline: 2px solid light-dark(var(--color-gray-9), var(--color-gray-1)); /* Contorno visibile al focus */
+  border-radius: 0.25rem; /* Arrotonda gli angoli del contorno */
 }
 
 /* ICON */
