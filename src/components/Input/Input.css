@@ -1,6 +1,10 @@
 /* CONTAINER */
 /* Stile per il contenitore principale dell'input */
 .container {
+  --accent-color: light-dark(
+    var(--color-gray-9),
+    var(--color-gray-1)
+  ); /* Colore di accento per il bordo */
   display: grid; /* Dispone gli elementi figli in una griglia */
   grid-template-rows: repeat(3, auto); /* 3 righe con altezza automatica */
   grid-template-columns: calc(24rem / 16) auto calc(24rem / 16); /* 3 colonne: stretta, flessibile, stretta */
@@ -12,19 +16,6 @@
     display: flex; /* Se .container ha anche la classe .radio, usa flex al posto di grid */
     flex-direction: column; /* Dispone i figli in colonna */
   }
-}
-
-.container:has(.icon) input:not([type="radio"]) {
-  padding-right: calc(
-    24rem / 16
-  ); /* Aggiunge padding a destra se c'è un'icona (eccetto per radio) */
-}
-
-.container:has(.icon.left) input:not([type="radio"]) {
-  padding-left: calc(
-    24rem / 16
-  ); /* Se l’icona è a sinistra, padding a sinistra */
-  padding-right: 0.25; /* Piccolo padding a destra per uniformità */
 }
 
 /* LABEL */
@@ -52,7 +43,7 @@
   grid-template-rows: subgrid; /* Usa subgrid per allinearsi con il contenitore principale */
   grid-row: 2/3; /* Campo input nella seconda riga */
   grid-column: 1/4; /* Occupa tutta la larghezza disponibile */
-  border: 1px solid light-dark(var(--color-gray-9), var(--color-gray-1)); /* Bordo grigio chiaro */
+  border: 1px solid var(--accent-color); /* Bordo grigio chiaro */
   border-radius: 0.25rem; /* Arrotonda gli angoli */
 
   &:has(input[type="radio"]) {
@@ -84,6 +75,12 @@ select {
   border-radius: 0.25rem; /* Arrotonda gli angoli del contorno */
 }
 
+.container:has(input:user-invalid, select:user-invalid) {
+  --accent-color: var(
+    --color-red-9
+  ); /* Colore di accento rosso per input non validi */
+}
+
 /* ICON */
 /* Stile per le icone all'interno dell'input */
 .icon {
@@ -103,4 +100,17 @@ select {
     width: 1rem; /* Dimensione icona SVG */
     height: 1rem;
   }
+}
+
+.container:has(.icon) input:not([type="radio"]) {
+  padding-right: calc(
+    24rem / 16
+  ); /* Aggiunge padding a destra se c'è un'icona (eccetto per radio) */
+}
+
+.container:has(.icon.left) input:not([type="radio"]) {
+  padding-left: calc(
+    24rem / 16
+  ); /* Se l’icona è a sinistra, padding a sinistra */
+  padding-right: 0.25; /* Piccolo padding a destra per uniformità */
 }
