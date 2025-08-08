@@ -11,6 +11,7 @@ const meta: Meta = {
   args: {
     label: "Label", // Etichetta predefinita per il componente
     isInvalid: false, // Stato di validità predefinito
+    disabled: false, // Stato disabilitato predefinito
   },
   tags: ["autodocs"], // Tag per abilitare la generazione automatica della documentazione
 };
@@ -23,7 +24,7 @@ type Story = StoryObj<typeof Input>;
 // Storia che mostra il componente Input in diverse varianti
 // Questa storia include un campo di input di tipo testo, un select e un radio
 export const Default: Story = {
-  render: ({ label, isInvalid }) => (
+  render: ({ label, isInvalid, disabled }) => (
     <div>
       <Input
         placeholder="Text here"
@@ -33,6 +34,7 @@ export const Default: Story = {
         icon="Book"
         errorText="Invalid email address"
         isInvalid={isInvalid}
+        disabled={disabled}
       />
       <Input
         label={label}
@@ -41,14 +43,17 @@ export const Default: Story = {
           { label: "Option 2", value: "2" },
         ]}
         kind="select"
+        disabled={disabled}
       />
       <Input
+        isInvalid={isInvalid}
         label={label}
         options={[
           { label: "Option 1", value: "1" },
           { label: "Option 2", value: "2" },
         ]}
         kind="radio"
+        disabled={disabled}
         name="example-radio"
       />
     </div>
@@ -64,14 +69,16 @@ export const InputText: Story = {
 // Storia per il componente Input con tipo select
 // Questa storia mostra come utilizzare il componente Input come un select
 export const Select: Story = {
-  render: ({ label }) => (
+  render: ({ label, isInvalid, disabled }) => (
     <Input
       label={label}
+      isInvalid={isInvalid}
       options={[
         { label: "Option 1", value: "1" },
         { label: "Option 2", value: "2" },
       ]}
       kind="select"
+      disabled={disabled}
     />
   ),
 };
@@ -79,14 +86,16 @@ export const Select: Story = {
 // Storia per il componente Input con tipo radio
 // Questa storia mostra come utilizzare il componente Input come un radio
 export const Radio: Story = {
-  render: ({ label }) => (
+  render: ({ label, isInvalid, disabled }) => (
     <Input
       label={label}
+      isInvalid={isInvalid}
       options={[
         { label: "Option 1", value: "1" },
         { label: "Option 2", value: "2" },
       ]}
       kind="radio"
+      disabled={disabled}
       name="example-radio"
     />
   ),
