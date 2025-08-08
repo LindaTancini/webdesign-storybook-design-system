@@ -28,8 +28,9 @@ export const Default: Story = {
         placeholder="Text here"
         label={label}
         iconPosition="left"
-        kind="text"
+        kind="email"
         icon="Book"
+        errorText="Invalid email address"
       />
       <Input
         label={label}
