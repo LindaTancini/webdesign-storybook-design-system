@@ -41,6 +41,7 @@ type RadioProps = {
 type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
   label: React.ReactNode; // Etichetta associata all’input
   icon?: keyof typeof Icon; // Icona opzionale da mostrare accanto all'input
+  errorText?: React.ReactNode; // Testo di errore opzionale da mostrare sotto l'input
 };
 
 // Componente interno che gestisce il rendering dell’elemento HTML corretto
@@ -94,6 +95,7 @@ export const Input: React.FC<GeneralInputProps> = ({
   className,
   icon,
   iconPosition,
+  errorText,
   ...props
 }) => {
   // Usa useId per generare un ID se non è stato passato (NB: questo ignora il valore di `id` se definito)
@@ -123,6 +125,8 @@ export const Input: React.FC<GeneralInputProps> = ({
             </div>
           )}
         </div>
+        {/* Se è presente un testo di errore, lo mostra sotto l'input */}
+        {errorText && <span className="error-text">{errorText}</span>}
       </div>
     </root.div>
   );
