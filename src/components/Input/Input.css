@@ -75,12 +75,6 @@ select {
   border-radius: 0.25rem; /* Arrotonda gli angoli del contorno */
 }
 
-.container:has(input:user-invalid, select:user-invalid) {
-  --accent-color: var(
-    --color-red-9
-  ); /* Colore di accento rosso per input non validi */
-}
-
 /* ICON */
 /* Stile per le icone all'interno dell'input */
 .icon {
@@ -113,4 +107,27 @@ select {
     24rem / 16
   ); /* Se l’icona è a sinistra, padding a sinistra */
   padding-right: 0.25; /* Piccolo padding a destra per uniformità */
+}
+
+/* ERROR TEXT */
+/* Stile per il testo di errore sotto l'input */
+.error-text {
+  color: light-dark(
+    var(--color-red-9),
+    var(--color-red-4)
+  ); /* Colore rosso per il testo di errore */
+  font-size: var(--font-size-sm); /* Dimensione del testo di errore */
+  margin-top: 0.5rem; /* Spazio sopra il testo di errore */
+  grid-row: 3/4; /* Posiziona il testo di errore nella terza riga */
+  grid-column: 1/4; /* Occupa tutta la larghezza disponibile */
+  display: none;
+}
+
+.container:where(.is-invalid) {
+  --accent-color: var(
+    --color-red-9
+  ); /* Colore di accento rosso per input non validi */
+  .error-text {
+    display: block; /* Mostra il testo di errore se l'input è invalido */
+  }
 }
