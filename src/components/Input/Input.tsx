@@ -42,6 +42,7 @@ type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
   label: React.ReactNode; // Etichetta associata all’input
   icon?: keyof typeof Icon; // Icona opzionale da mostrare accanto all'input
   errorText?: React.ReactNode; // Testo di errore opzionale da mostrare sotto l'input
+  isInvalid?: boolean; // Indica se l'input è invalido, usato per mostrare lo stato di errore
 };
 
 // Componente interno che gestisce il rendering dell’elemento HTML corretto
@@ -96,6 +97,7 @@ export const Input: React.FC<GeneralInputProps> = ({
   icon,
   iconPosition,
   errorText,
+  isInvalid,
   ...props
 }) => {
   // Usa useId per generare un ID se non è stato passato (NB: questo ignora il valore di `id` se definito)
@@ -107,7 +109,11 @@ export const Input: React.FC<GeneralInputProps> = ({
       <GlobalStyles />
       <style>{css}</style>
       {/* Contenitore principale con classi dinamiche per stile e tipo di input */}
-      <div className={`${className ?? ""} container ${props.kind}`}>
+      <div
+        className={`${className ?? ""} container ${props.kind} ${
+          isInvalid ? "is-invalid" : ""
+        }`}
+      >
         {/* Se è un gruppo di radio button, mostra il label come semplice testo */}
         {props.kind === "radio" ? (
           <span className="label">{label}</span>
