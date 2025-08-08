@@ -5,12 +5,17 @@
     var(--color-gray-9),
     var(--color-gray-1)
   ); /* Colore di accento per il bordo */
+  --bcg-color: light-dark(
+    white,
+    var(--color-gray-12)
+  ); /* Colore di sfondo dinamico in base al tema */
   display: grid; /* Dispone gli elementi figli in una griglia */
   grid-template-rows: repeat(3, auto); /* 3 righe con altezza automatica */
   grid-template-columns: calc(24rem / 16) auto calc(24rem / 16); /* 3 colonne: stretta, flessibile, stretta */
-  margin-bottom: 1rem; /* Spazio inferiore */
+  margin-bottom: 1em; /* Spazio inferiore */
   position: relative; /* Necessario per posizionare l'icona */
   padding: 0.25em; /* Padding per evitare che il contenuto tocchi i bordi */
+  border-radius: 0.25em; /* Bordi arrotondati uniformi */
 
   &:where(.radio) {
     display: flex; /* Se .container ha anche la classe .radio, usa flex al posto di grid */
@@ -32,7 +37,7 @@
   font-size: var(
     --font-size-sm
   ); /* Usa la dimensione testo definita nel tema */
-  margin-bottom: 0.25rem; /* Piccolo spazio sotto l'etichetta */
+  margin-bottom: 0.25em; /* Piccolo spazio sotto l'etichetta */
 }
 
 /* INPUT */
@@ -44,7 +49,7 @@
   grid-row: 2/3; /* Campo input nella seconda riga */
   grid-column: 1/4; /* Occupa tutta la larghezza disponibile */
   border: 1px solid var(--accent-color); /* Bordo grigio chiaro */
-  border-radius: 0.25rem; /* Arrotonda gli angoli */
+  border-radius: 0.25em; /* Arrotonda gli angoli */
 
   &:has(input[type="radio"]) {
     display: flex; /* Se contiene un input radio, usa flex */
@@ -63,7 +68,8 @@ input:not([type="radio"]),
 select {
   min-height: calc(28rem / 16); /* Altezza minima uniforme */
   border: none; /* Rimuove il bordo di default */
-  border-radius: 0.25rem; /* Arrotonda gli angoli */
+  border-radius: 0.25em; /* Arrotonda gli angoli */
+  background-color: var(--bcg-color); /* Colore di sfondo dinamico */
 }
 
 :where(input, select):focus {
@@ -72,9 +78,14 @@ select {
 
 .input-container:has(:where(input, select):focus-visible) {
   outline: 2px solid light-dark(var(--color-gray-9), var(--color-gray-1)); /* Contorno visibile al focus */
-  border-radius: 0.25rem; /* Arrotonda gli angoli del contorno */
+  border-radius: 0.25em; /* Arrotonda gli angoli del contorno */
 }
 
+/* SELECT */
+/* Stile specifico per i select */
+select {
+  border-radius: 025em;
+}
 /* ICON */
 /* Stile per le icone all'interno dell'input */
 .icon {
@@ -85,9 +96,12 @@ select {
   justify-content: center; /* Allinea orizzontalmente */
   width: calc(24rem / 16); /* Larghezza icona coerente con il padding */
   pointer-events: none; /* L'icona non deve interferire con l'interazione dell'input */
+  background-color: var(--bcg-color); /* Colore di sfondo dinamico */
+  border-radius: 0 0.25em 0.25em 0; /* Bordo arrotondato coerente a destra */
 
   &:where(.left) {
     grid-column: 1/2; /* Se ha la classe .left, posizionala a sinistra */
+    border-radius: 0.25em 0 0 0.25em; /* Bordo arrotondato coerente a sinistra */
   }
 
   > svg {
@@ -106,7 +120,7 @@ select {
   padding-left: calc(
     24rem / 16
   ); /* Se l’icona è a sinistra, padding a sinistra */
-  padding-right: 0.25; /* Piccolo padding a destra per uniformità */
+  padding-right: 0.25em; /* Piccolo padding a destra per uniformità */
 }
 
 /* ERROR TEXT */
@@ -117,7 +131,7 @@ select {
     var(--color-red-4)
   ); /* Colore rosso per il testo di errore */
   font-size: var(--font-size-sm); /* Dimensione del testo di errore */
-  margin-top: 0.5rem; /* Spazio sopra il testo di errore */
+  margin-top: 0.5em; /* Spazio sopra il testo di errore */
   grid-row: 3/4; /* Posiziona il testo di errore nella terza riga */
   grid-column: 1/4; /* Occupa tutta la larghezza disponibile */
   display: none;
@@ -129,5 +143,26 @@ select {
   ); /* Colore di accento rosso per input non validi */
   .error-text {
     display: block; /* Mostra il testo di errore se l'input è invalido */
+  }
+}
+
+/* DISABLED STATE */
+/* Stile per gli input disabilitati */
+.container:has([disabled]) {
+  --accent-color: light-dark(
+    var(--color-gray-1),
+    var(--color-gray-12)
+  ); /* Colore di accento grigio per input disabilitati */
+  --bcg-color: light-dark(
+    var(--color-gray-1),
+    var(--color-gray-9)
+  ); /* Colore di sfondo grigio per input disabilitati */
+
+  .icon svg {
+    opacity: 0.5; /* Disattiva visivamente l’icona */
+  }
+
+  .icon svg {
+    opacity: 0.5; /* Icona meno visibile */
   }
 }
